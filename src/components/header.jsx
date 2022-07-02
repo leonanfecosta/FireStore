@@ -2,9 +2,9 @@ import React from 'react'
 
 function Header() {
   return (
-    <header className='flex bg-black'>
+    <header className='flex justify-between p-1 border border-black'>
       <div>
-        <h1 className="text-3xl font-bold underline">
+        <h1>
           FireStore
         </h1>
       </div>

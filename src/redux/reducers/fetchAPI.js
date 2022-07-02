@@ -29,7 +29,7 @@ export const fetchAPI = createSlice({
   }
 })
 
-export const { setProducts, setProductsError } = fetchAPI.actions
+export const { setProducts } = fetchAPI.actions
 
 export const selectProducts = (state) => state.fetcher.products
 export const selectProductsError = (state) => state.fetcher.productsError
