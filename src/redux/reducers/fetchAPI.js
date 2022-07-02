@@ -1,25 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { getProductsFromQuery } from '../../helpers/fetchAllApi'
+
+export const fetchAllProducts = createAsyncThunk('fetchProducts', async (query) => {
+  const products = await getProductsFromQuery(query)
+  return products
+});
 
 const initialState = {
-  value: 0,
+  products: [],
+  productsError: null,
 }
 
 export const fetchAPI = createSlice({
-  name: 'counter',
+  name: 'fetcher',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    setProducts: (state, action) => {
+      state.products = action.payload
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
+      state.products = action.payload
+    })
+    builder.addCase(fetchAllProducts.rejected, (state, action) => {
+      state.productsError = action.payload
+    })
+  }
 })
 
-export const { increment, decrement, incrementByAmount } = fetchAPI.actions
+export const { setProducts, setProductsError } = fetchAPI.actions
+
+export const selectProducts = (state) => state.fetcher.products
+export const selectProductsError = (state) => state.fetcher.productsError
 
 export default fetchAPI.reducer
