@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { fetchAllProducts } from "./redux/reducers/fetchAPI";
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();

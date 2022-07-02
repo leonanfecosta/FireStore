@@ -2,7 +2,18 @@ import React from 'react'
 
 function Header() {
   return (
-    <h1>oi gatos</h1> 
+    <header className='flex bg-black'>
+      <div>
+        <h1 className="text-3xl font-bold underline">
+          FireStore
+        </h1>
+      </div>
+      <div>
+        <h2>
+          Carrinho de compras
+        </h2>
+      </div>
+    </header>
   )
 }
 
