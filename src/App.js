@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import { fetchAllProducts } from "./redux/reducers/fetchAPI";
+import { fetchAllProducts } from "./redux/reducers/fetchProducts";
 import "./index.css";
 
 function App() {

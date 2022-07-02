@@ -8,15 +8,16 @@ export const fetchAllProducts = createAsyncThunk('fetchProducts', async (query) 
 
 const initialState = {
   products: [],
+  searchProducts: '',
   productsError: null,
 }
 
-export const fetchAPI = createSlice({
+export const fetchProducts = createSlice({
   name: 'fetcher',
   initialState,
   reducers: {
-    setProducts: (state, action) => {
-      state.products = action.payload
+    setSearchProducts: (state, action) => {
+      state.searchProducts = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -29,9 +30,9 @@ export const fetchAPI = createSlice({
   }
 })
 
-export const { setProducts } = fetchAPI.actions
+export const { setSearchProducts } = fetchProducts.actions
 
 export const selectProducts = (state) => state.fetcher.products
-export const selectProductsError = (state) => state.fetcher.productsError
+export const selectSearchProducts = (state) => state.fetcher.searchProducts
 
-export default fetchAPI.reducer
+export default fetchProducts.reducer

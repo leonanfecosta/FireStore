@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import fetchAPI from '../reducers/fetchAPI'
+import fetchProducts from '../reducers/fetchProducts'
 import fetchCategories from '../reducers/fetchCategories'
 
 export const store = configureStore({
-  reducer: {fetchAPI, fetchCategories},
+  reducer: {fetchProducts, fetchCategories},
 })
