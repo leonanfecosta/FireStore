@@ -1,9 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../redux/reducers/addToCart";
 
 function ProductList () {
   const products = useSelector(state => state.fetchProducts.products);
   const search = useSelector(state => state.fetchProducts.searchProducts);
+  const dispatch = useDispatch();
+
+  const addCart = (product) => {
+    const item = {
+      id: product.id,
+      name: product.title,
+      price: product.price,
+      image: product.thumbnail,
+      quantity: 1,
+    }
+    dispatch(addToCart(item));
+  };
+
   return (
     <section>
       
@@ -18,6 +32,7 @@ function ProductList () {
             <p>{`R$ ${ product.price.toFixed(2) }`}</p>
             <img src={product.thumbnail} alt={product.title} />
             { product.shipping.free_shipping && <p>Frete grátis</p> }
+            <button type="button" onClick={ () => addCart(product) }>Adicionar ao carrinho</button>
           </div>
         )) }
       </div>

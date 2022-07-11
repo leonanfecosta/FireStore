@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -9,9 +10,11 @@ function Header() {
         </h1>
       </div>
       <div>
+        <Link to='/shoppingCart'>
         <h2>
           Carrinho de compras
         </h2>
+        </Link>
       </div>
     </header>
   )
