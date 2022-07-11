@@ -6,11 +6,12 @@ function CartList() {
   return (
     <div>
       <h1>Lista compras</h1>
-
       {cart.map(product => ((
         <div key={product.id}>
           <img src={product.image} alt={product.name} />
           <h2>{product.name}</h2>
+          <button type='button'>-</button>
+          <button type='button'>+</button>
           <p>{`Quantidade: ${product.quantity}`}</p>
           <p>{`R$ ${product.price.toFixed(2)}`}</p>
         </div>

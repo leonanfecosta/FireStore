@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addToCart } from "../redux/reducers/addToCart";
 
 function ProductList () {
@@ -20,20 +21,21 @@ function ProductList () {
 
   return (
     <section>
-      
       <div>
         { search && <h1>{`Busca por: ${search}`}</h1> }
         { products.length > 0 && <h4>{`${products.length} produtos encontrados`}</h4> }
       </div>
       <div>
         { products.map(product => (
-          <div key={product.id}>
-            <h2>{product.title}</h2>
-            <p>{`R$ ${ product.price.toFixed(2) }`}</p>
-            <img src={product.thumbnail} alt={product.title} />
-            { product.shipping.free_shipping && <p>Frete grátis</p> }
-            <button type="button" onClick={ () => addCart(product) }>Adicionar ao carrinho</button>
-          </div>
+          <Link to={`details/${product.id}`}>
+            <div key={product.id}>
+              <h2>{product.title}</h2>
+              <p>{`R$ ${ product.price.toFixed(2) }`}</p>
+              <img src={product.thumbnail} alt={product.title} />
+              { product.shipping.free_shipping && <p>Frete grátis</p> }
+              <button type="button" onClick={ () => addCart(product) }>Adicionar ao carrinho</button>
+            </div>
+          </Link>
         )) }
       </div>
     </section>
